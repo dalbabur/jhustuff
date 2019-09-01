@@ -1,0 +1,185 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>PSet10</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-11-30"><meta name="DC.source" content="PSet10.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Small Samples</a></li><li><a href="#2">Hypothesis with small samples</a></li><li><a href="#3">Linear Regression</a></li></ul></div><h2>Small Samples<a name="1"></a></h2><pre class="codeinput"><span class="comment">% a</span>
+b1 = [12 20 7 18 9 3 22];
+x = mean(b1);
+s = std(b1);
+n = length(b1);
+dof = n-1;
+t = tinv(0.95,dof);
+mu = x - t*s/sqrt(n);
+<span class="comment">% b</span>
+b2 = [b1 14 21 13 10 7 18 12];
+x2 = mean(b2);
+s2 = std(b2);
+n2 = length(b2);
+dof2 = n2-1;
+t2 = tinv(0.95,dof2);
+mu2 = x- t2*s2/sqrt(n2);
+</pre><h2>Hypothesis with small samples<a name="2"></a></h2><pre class="codeinput">n1 = 21;
+n2 = 21;
+x1 = 8;
+x2 = 6.5;
+s1 = sqrt(4.5);
+s2 = sqrt(2);
+dof = n1+n2-2;
+t = tinv(0.95,dof);
+
+<span class="comment">% a</span>
+sp = sqrt(((n1-1)*s1*s1+(n2-1)*s2*s2)/(dof));
+difA = (x1-x2)- t*sp*sqrt(1/n1+1/n2);
+<span class="comment">% b</span>
+difB = (x1-x2)- t*sqrt((s1^2)/n1+(s2^2)/n2);
+</pre><h2>Linear Regression<a name="3"></a></h2><pre class="codeinput">data = xlsread(<span class="string">'linearregression.xlsx'</span>);
+P = data(:,1);
+T = data(:,2);
+
+<span class="comment">% a</span>
+scatter(P,T)
+<span class="comment">% b</span>
+B1 = sum((P-mean(P)).*(T-mean(T)))/sum((P-mean(P)).^2);
+B0 = mean(T)-B1*mean(P);
+y = B0+B1*P;
+hold <span class="string">on</span>
+plot(P,y)
+hold <span class="string">off</span>
+<span class="comment">% c</span>
+dof = length(T)-2;
+var = sum((T-(B0+B1)*P).^2)/(dof);
+<span class="comment">% d</span>
+x1 = 28;
+ci1 = tinv(0.95,dof)*sqrt(1+1/(dof+2)+(x1-mean(P))^2/sum((P-mean(P)).^2));
+<span class="comment">% e</span>
+x2 = 31;
+ci2 = tinv(0.95,dof)*sqrt(1+1/(dof+2)+(x2-mean(P))^2/sum((P-mean(P)).^2));
+</pre><img vspace="5" hspace="5" src="PSet10_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Small Samples
+
+% a
+b1 = [12 20 7 18 9 3 22];
+x = mean(b1);
+s = std(b1);
+n = length(b1);
+dof = n-1;
+t = tinv(0.95,dof);
+mu = x - t*s/sqrt(n);
+% b
+b2 = [b1 14 21 13 10 7 18 12];
+x2 = mean(b2);
+s2 = std(b2);
+n2 = length(b2);
+dof2 = n2-1;
+t2 = tinv(0.95,dof2);
+mu2 = x- t2*s2/sqrt(n2);
+
+%% Hypothesis with small samples
+
+n1 = 21;
+n2 = 21;
+x1 = 8;
+x2 = 6.5;
+s1 = sqrt(4.5);
+s2 = sqrt(2);
+dof = n1+n2-2;
+t = tinv(0.95,dof);
+
+% a
+sp = sqrt(((n1-1)*s1*s1+(n2-1)*s2*s2)/(dof));
+difA = (x1-x2)- t*sp*sqrt(1/n1+1/n2);
+% b
+difB = (x1-x2)- t*sqrt((s1^2)/n1+(s2^2)/n2);
+
+%% Linear Regression
+
+data = xlsread('linearregression.xlsx');
+P = data(:,1);
+T = data(:,2);
+
+% a
+scatter(P,T)
+% b
+B1 = sum((P-mean(P)).*(T-mean(T)))/sum((P-mean(P)).^2);
+B0 = mean(T)-B1*mean(P);
+y = B0+B1*P;
+hold on
+plot(P,y)
+hold off
+% c
+dof = length(T)-2;
+var = sum((T-(B0+B1)*P).^2)/(dof);
+% d
+x1 = 28;
+ci1 = tinv(0.95,dof)*sqrt(1+1/(dof+2)+(x1-mean(P))^2/sum((P-mean(P)).^2));
+% e 
+x2 = 31;
+ci2 = tinv(0.95,dof)*sqrt(1+1/(dof+2)+(x2-mean(P))^2/sum((P-mean(P)).^2));
+
+##### SOURCE END #####
+--></body></html>
