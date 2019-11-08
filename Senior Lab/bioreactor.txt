@@ -1,0 +1,18 @@
+The two main ways in which we can control KLa is through aeration and agitaion.
+
+Aeration reffers to how much oxygen we feed into the bioreactor, 
+and agiation reffers to the impeller speed.
+
+Agitation serves two purposes: mainly to mix the oxygen coming in with the cell media homoginioulsy, and to breakup the stream of infloiwng air into smaller bubbles, incerasing the total surface area for mass transfer (increasing a). 
+
+As you can imagine (pointing at figure), more agitation means better mixing and more surface area therefore higher KLa, but only upto a certain extent. On the extreme case, the media will be pushed to the walls creating a parabolic profile, and most of the oxygen will not be in contact with the liquid for long. So we expect KLa to increase an the decrease with more agitation.
+
+In order to measure KLa, we used a gassing out technique. If we integrate the mass transfer equation Joanna showed, we observe theres a linear relationship between the logarithmic concentration difference and time, and this relationship is KLa. The first thing we do is determine the oxygen saturation concetration for the specific rpm and flow rate (this is 100%) and then dispalce all the oxygen in the bioreactor with Nitrogen. Then we add O2 at a constant rate and record the change (walking thhrough graph). You can inmagine the line starts to level off as we get closer and closer to 100% since it takes more time. 
+
+Fill with media, set aeration and agitation, and measure oxygen till saturated. Gas out and repeat for differnet conditions.
+
+Here are our resuts. On the left the oxygen level ovre time, and on the right the logarithmic differance. And as I said before linear part and levels off. In this case, KLa would be 0.0399 inverse hours. 
+
+We repeaed this for different rpms, and here we show our results for an airflow of 6LMH. We also tried going at 3 LMH, but fewer poitns, and saw KLa wasnt nearly as high. 
+
+Now that we have the optimal parameters to maximize KLa, we can proceed to grow the bacteria. 
